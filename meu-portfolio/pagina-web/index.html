@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eduardo Bernardo Dias — Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e10;
+      --bg2: #16161a;
+      --card: #1c1c22;
+      --border: #2a2a35;
+      --accent: #7c6af7;
+      --accent2: #f06292;
+      --text: #e8e8f0;
+      --muted: #8888a0;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(14,14,16,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-weight: 800; font-size: 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: flex-start;
+      padding: 8rem 2.5rem 4rem;
+      max-width: 900px; margin: 0 auto;
+      position: relative;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(124,106,247,0.15);
+      border: 1px solid rgba(124,106,247,0.3);
+      color: var(--accent);
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.9rem; font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer; border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #6a58e8; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 2.5rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      color: var(--muted); font-size: 0.8rem;
+    }
+    .scroll-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2.5rem; max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--accent); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -1px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── SOBRE ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; }
+    .about-skills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .skill-tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.82rem; padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+    }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem; }
+
+    /* ── PROJETOS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none; color: inherit;
+      display: block;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-icon {
+      font-size: 1.8rem; margin-bottom: 1rem;
+    }
+    .project-title {
+      font-family: var(--font-head);
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+    .project-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.2rem; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-tag {
+      background: rgba(124,106,247,0.12);
+      color: var(--accent);
+      font-size: 0.75rem; padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    /* ── REPOSITÓRIO ── */
+    .repo-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+    }
+    .folder-list { list-style: none; }
+    .folder-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .folder-item:last-child { border-bottom: none; }
+    .folder-icon { font-size: 1.2rem; margin-top: 2px; flex-shrink: 0; }
+    .folder-name {
+      font-family: var(--font-head);
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--accent); margin-bottom: 0.2rem;
+    }
+    .folder-desc { color: var(--muted); font-size: 0.88rem; }
+
+    /* ── CONTATO ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s;
+    }
+    .contact-card:hover { border-color: var(--accent); }
+    .contact-icon { font-size: 1.5rem; }
+    .contact-label { font-size: 0.78rem; color: var(--muted); }
+    .contact-value { font-weight: 500; font-size: 0.95rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 3rem 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.85rem;
+    }
+    footer span { color: var(--accent); }
+
+    /* ── DIVIDER LINE ── */
+    .divider {
+      width: 100%; height: 1px;
+      background: var(--border);
+      max-width: 900px; margin: 0 auto;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      section { padding: 3.5rem 1.2rem; }
+      .hero { padding: 7rem 1.2rem 3rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FADE IN ANIMATION ── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">port<span>.</span>fólio</a>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#repositorio">Repositório</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="hero-tag">✦ Disponível para oportunidades</span>
+    <h1>
+      Olá, eu sou<br>
+      <span class="highlight">Eduardo Bernardo</span>
+    </h1>
+    <p>Estudante de Ciência da Computação no CEUB, apaixonado por tecnologia e em constante evolução. Este portfólio reúne meus projetos, aprendizados e trajetória.</p>
+    <div class="hero-btns">
+      <a href="#sobre" class="btn btn-primary">Conheça mais →</a>
+      <a href="https://github.com/Dudsdsds" class="btn btn-ghost" target="_blank">GitHub ↗</a>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-dot"></div>
+      role para explorar
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <p class="section-label fade-up">// sobre mim</p>
+    <h2 class="section-title fade-up">Quem sou eu</h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>Sou estudante de Ciência da Computação no CEUB, com interesse em programação, lógica computacional e resolução de problemas através da tecnologia.</p>
+        <p>Acredito que a tecnologia tem o poder de transformar vidas, e estou sempre buscando novos desafios para evoluir como profissional e pessoa.</p>
+        <div class="about-skills">
+          <span class="skill-tag">Lógica de programação</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Ciência da Computação</span>
+        </div>
+      </div>
+      <div class="about-stats fade-up">
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Projeto em andamento</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Ano estudando</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REPOSITÓRIO -->
+  <section id="repositorio">
+    <p class="section-label fade-up">// repositório</p>
+    <h2 class="section-title fade-up">Estrutura do projeto</h2>
+    <div class="repo-section fade-up">
+      <ul class="folder-list">
+        <li class="folder-item">
+          <span class="folder-icon">📁</span>
+          <div>
+            <div class="folder-name">academico/</div>
+            <div class="folder-desc">Trabalhos universitários, TCC e projetos desenvolvidos nas disciplinas do curso.</div>
+          </div>
+        </li>
+        <li class="folder-item">
+          <span class="folder-icon">💡</span>
+          <div>
+            <div class="folder-name">pessoal/</div>
+            <div class="folder-desc">Projetos pessoais, experimentos, scripts utilitários e estudos independentes.</div>
+          </div>
+        </li>
+        <li class="folder-item">
+          <span class="folder-icon">📄</span>
+          <div>
+            <div class="folder-name">documentacao/</div>
+            <div class="folder-desc">Slides de apresentações, relatórios técnicos e materiais de referência.</div>
+          </div>
+        </li>
+        <li class="folder-item">
+          <span class="folder-icon">🌐</span>
+          <div>
+            <div class="folder-name">pagina-web/</div>
+            <div class="folder-desc">Código-fonte deste site. HTML, CSS e JavaScript do portfólio online.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <p class="section-label fade-up">// contato</p>
+    <h2 class="section-title fade-up">Vamos conversar</h2>
+    <div class="contact-grid fade-up">
+      <a href="https://www.linkedin.com/in/eduardo-bernardo-dias-a4595a3a6/" class="contact-card" target="_blank">
+        <span class="contact-icon">💼</span>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">Eduardo Bernardo Dias</div>
+        </div>
+      </a>
+      <a href="https://github.com/Dudsdsds" class="contact-card" target="_blank">
+        <span class="contact-icon">🐙</span>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">github.com/Dudsdsds</div>
+        </div>
+      </a>
+      <a href="mailto:eduardobdias08@gmail.com" class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <div class="contact-label">E-mail</div>
+          <div class="contact-value">eduardobdias08@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://github.com/Dudsdsds/Bootcamp-2" class="contact-card" target="_blank">
+        <span class="contact-icon">⭐</span>
+        <div>
+          <div class="contact-label">Repositório</div>
+          <div class="contact-value">Bootcamp-2 no GitHub</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Feito com <span>♥</span> por Eduardo Bernardo Dias · <span>2026</span></p>
+    <p style="margin-top:0.4rem">Versionado com Git · Publicado no GitHub Pages</p>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
